@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Science+Gothic:wght@100..900&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-corp: lexend, sans-serif;
+  --font-heading: "Science Gothic", sans-serif;
+
+  --color-primary: rgb(255, 89, 9);
+  --color-secondary: rgb(149, 0, 255);
+  --color-black: rgb(26, 36, 33);
+  --color-white: #ffffff;
+}
+
+@theme inline {
+  --default-font-family: var(--font-corp);
+}
+
+@layer base {
+  body {
+    color: var(--color-white);
+  }
+}
+
+@layer components {
+  .layer {
+    @apply bg-white/20 rounded-2xl backdrop-blur-md p-4 shadow-md shadow-white/10;
+  }
+
+  input[type="range"] {
+    @apply appearance-none h-1 bg-linear-to-r from-primary/50 to-secondary/50 rounded-full;
+
+    &::-webkit-slider-thumb,
+    &::-ms-thumb,
+    &::-moz-range-thumb {
+      @apply appearance-none rounded-full bg-primary border-none cursor-pointer;
+    }
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    @apply appearance-none rounded-full bg-secondary border-none cursor-pointer h-3 w-5;
+  }
+  input[type="range"]::-moz-range-thumb {
+    @apply appearance-none rounded-full bg-secondary border-none cursor-pointer h-3 w-5;
+  }
+}
