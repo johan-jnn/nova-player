@@ -1,52 +1,88 @@
-# Nova Simple Player
+# Workshop Application de musique
 
-A very minimalist player built in VueJS for an educational workshop for my school.
+Hello jeune développeur !
+Te voici sur le projet de la prochaine application musical du moment !
 
-## The workshop's theme
+## Démarrer l'application
 
-A startup wants to launch a music application.
-The development teams have already made good progress with the application, but there remains a bug, a feature and 1 or 2 UI elements to be implemented.
+L'application est construite avec le framework [VueJS](https://vuejs.org/). Il est également possible d'utiliser les classes [Tailwind](https://tailwindcss.com/) si jamais tu le souhaites.
 
-## Project Setup
-
-### Install dependencies
+Afin de bien démarrer l'application, ouvres un terminal de commande dans **VSCode** (Dans la barre de l'application --> `Terminal` -> `Nouveau Terminal`), puis tapes les différentes commandes ci-dessous :
 
 ```sh
-bun install
+# Installation de VueJs et TailwindCss
+npm install
+
+# Lancement de l'application et ouverture automatique de celle-ci
+npm run dev --open
 ```
 
-### Setup environnement variable
+### VueJS
 
-```sh
-mv .env.exemple .env
+VueJS est un framework qui se rapproche énormément de l'HTML de base.
+Le projet est actuellement divisé en plusieurs composant afin d'éviter de répéter du code.
+Chaque composant possède 3 partie :
+
+#### Scripting
+
+Le scripting d'un composant est toute la logique de celui-ci.
+
+Il se trouve à l'intérieur de la balise `<script setup>` :
+
+```html
+<script setup>
+  // Ici tu peux écrire ta logique
+</script>
 ```
 
-### Compile and Hot-Reload for Development
+#### Templating
 
-```sh
-bun dev
+Le templating est l'html qui va être rendu par le navigateur.
+
+Il se trouve dans la balise `template` :
+
+```html
+<template>
+  <h1>Ce titre sera affiché sur la page</h1>
+</template>
 ```
 
-### Compile and Minify for Production
+#### Styling
 
-```sh
-bun run build
+Enfin, afin de rendre le composant plus joli, il est possible de le styliser.
+
+Le style s'écrit au format **CSS** et se trouve dans la balise `<style scoped>`.
+
+> Note: Le style appliqué à un composant est uniquement pour celui-ci. Il ne sera pas appliqué aux autres éléments de la page.
+
+```html
+<style scoped>
+  h1 {
+    color: red;
+  }
+</style>
 ```
 
-## Features
+## Tes missions
 
-### Working player
+Notre équipe de développeurs a déjà conçu une bonne partie de l'application, mais quelques petites fonctionnalités doivent encore être implémentés.
 
-![Working player](./.github/screenshots/app.png)
+### Changement du nom de l'application
 
-### Searchbar
+Afin d'éviter de réécrire plusieurs fois le nom de l'application, nous avons décidé d'utiliser une **variable d'environnement** pour stocker le nom de l'application.
 
-Works with songs' names and artists' names
+> Changes la variable d'environnement afin de nommer correctement l'application.
 
-![Search for 'Mi'](./.github/screenshots/searchbar.png)
+### Jouer une musique
 
-### Queue system
+Actuellement la fonctionnalité pour jouer une musique ne marche pas. Il faudrait que tu regardes la fonction `play` dans le fichier `Song.vue`, ainsi que comment fonctionne le `player` (n'hésite pas à demander aux développeurs de t'expliquer comment le `player` fonctionne) afin de jouer le son lorsque l'utilisateur demande à ce que le son soit joué.
 
-With previous/next playing and "add to queue" button
+### Styliser le player
 
-![Add to queue button](./.github/screenshots/queue.png)
+Car oui, le métier de développeur ne s'arrête pas à la logique de l'application, il va également dans le design de l'application.
+
+> Rends toi dans le `<style></style>` du composant `Player` afin de rendre le player un peu plus attrayant.
+
+#### Bonus
+
+Si tu es à l'aise avec le reste

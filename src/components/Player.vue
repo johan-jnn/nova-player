@@ -13,10 +13,7 @@ const timer = computed({
 </script>
 
 <template>
-  <div
-    v-if="player.playing"
-    class="layer p-2 h-full grid grid-cols-3 grid-rows-1 justify-between items-center"
-  >
+  <div v-if="player.playing" class="player">
     <div class="h-full grid grid-rows-1 grid-cols-[auto_1fr] gap-4">
       <img
         :src="Song.pictureUrl(player.playing.metadata.common.picture[0])"
@@ -88,3 +85,9 @@ const timer = computed({
     <p>Nothing is currently playing. Select a song to begin</p>
   </div>
 </template>
+
+<style>
+.player {
+  /** Rendre le style du player un chouille plus joli */
+}
+</style>

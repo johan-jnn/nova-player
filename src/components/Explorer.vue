@@ -3,8 +3,22 @@ import { useLibrary } from "@/utils/library";
 import { ref } from "vue";
 import Song from "./Song.vue";
 
-const library = useLibrary();
+const { available } = useLibrary();
 const query = ref("");
+
+/**
+ * Retourne uniquement les musiques qui valide la chaine de caractères données
+ * @param {string} query La query entrée
+ */
+function filtered(query) {
+  const found = [];
+
+  for (const song of available) {
+    found.push(song);
+  }
+
+  return found;
+}
 </script>
 
 <template>
@@ -21,19 +35,7 @@ const query = ref("");
     <ul
       class="grid grid-cols-4 gap-8 justify-between w-full overflow-y-scroll h-full"
     >
-      <li
-        v-for="song in library.available.filter(
-          (song) =>
-            !song.metadata ||
-            song.metadata.common.title
-              .toLowerCase()
-              .includes(query.toLowerCase()) ||
-            song.metadata.common.artist
-              .toLowerCase()
-              .includes(query.toLowerCase())
-        )"
-        class="h-fit"
-      >
+      <li v-for="song in filtered(query)" :key="song.url" class="h-fit">
         <Song :song />
       </li>
     </ul>

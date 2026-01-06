@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Song, useLibrary } from "@/utils/library";
+import { Song } from "@/utils/library";
 import { usePlayer } from "@/utils/player";
 import { Icon } from "@iconify/vue";
 import { onMounted, ref } from "vue";
@@ -8,13 +8,15 @@ const { song } = defineProps<{
   song: Song;
 }>();
 const player = usePlayer();
-const library = useLibrary();
-
 let loaded = ref<boolean>();
 onMounted(async () => {
   await song.loadMetadatas();
   loaded.value = true;
 });
+
+function play() {
+  // Insérer le son au player (voir la définition de l'interface `player`)
+}
 </script>
 
 <template>
@@ -48,7 +50,7 @@ onMounted(async () => {
           aria-label="Listen this song"
           title="play"
           type="button"
-          @click="library.insert_queue_from(song, player, true)"
+          @click="play()"
         >
           <Icon icon="pixel:play" />
         </button>
