@@ -85,4 +85,4 @@ Car oui, le métier de développeur ne s'arrête pas à la logique de l'applicat
 
 #### Bonus
 
-Si tu es à l'aise avec le reste
+Si tu es à l'aise avec le reste, lorsque la musique est en train de jouer (et pas en pause), fais en sorte que le disque tourne sur lui-même !

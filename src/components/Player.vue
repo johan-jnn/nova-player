@@ -18,10 +18,7 @@ const timer = computed({
       <img
         :src="Song.pictureUrl(player.playing.metadata.common.picture[0])"
         alt="Song's cover"
-        class="h-full aspect-square rounded-full block animate-spin [animation-duration:10s]"
-        :class="{
-          '[animation-play-state:paused]': player.status !== 'playing',
-        }"
+        class="h-full aspect-square"
       />
       <div>
         <h2 class="font-heading">{{ player.playing.metadata.common.title }}</h2>
