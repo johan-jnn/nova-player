@@ -21,13 +21,13 @@ function play() {
 
 <template>
   <div
-    class="p-2 rounded-md bg-primary/20 grid grid-rows-[1fr_auto] gap-2 w-full h-full justify-center"
+    class="p-2 grid grid-rows-[1fr_auto] gap-2 w-full h-full justify-center"
     v-if="loaded"
   >
     <img
       :src="Song.pictureUrl(song.metadata.common.picture?.[0])"
       alt="cover"
-      class="aspect-square rounded-md w-full"
+      class="aspect-square w-full"
     />
     <div class="grid grid-cols-[1fr_auto]">
       <div class="grid">
