@@ -10,13 +10,10 @@ useHead({
 </script>
 
 <template>
-  <div
-    class="h-screen w-screen bg-white bg-linear-to-br from-primary/50 to-secondary/60 flex items-center justify-center p-8"
+  <div id="color"
+    class="h-screen w-screen from-primary/50 to-secondary/60 flex items-center justify-center"
   >
-    <div
-      id="app"
-      class="layer aspect-1920/1080 w-full grid gap-4 grid-rows-[90%_10%] max-w-[80vw] max-h-[90vh]"
-    >
+    <div id="app" class="layer">
       <div class="flex gap-2">
         <Aside />
         <Explorer />
@@ -25,3 +22,14 @@ useHead({
     </div>
   </div>
 </template>
+<style scoped>
+.layer {
+  margin: 50px;
+  max-height: 100vh;
+}
+
+#color{
+  background-color: var(--color-tercary);
+}
+
+</style>

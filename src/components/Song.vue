@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Song } from "@/utils/library";
+import { Song, useLibrary } from "@/utils/library";
 import { usePlayer } from "@/utils/player";
 import { Icon } from "@iconify/vue";
 import { onMounted, ref } from "vue";
@@ -8,6 +8,7 @@ const { song } = defineProps<{
   song: Song;
 }>();
 const player = usePlayer();
+const library = useLibrary();
 let loaded = ref<boolean>();
 onMounted(async () => {
   await song.loadMetadatas();
@@ -16,25 +17,26 @@ onMounted(async () => {
 
 function play() {
   // Insérer le son au player (voir la définition de l'interface `player`)
+  library.insert_queue_from(song, player, true, true);
 }
 </script>
 
 <template>
   <div
-    class="p-2 grid grid-rows-[1fr_auto] gap-2 w-full h-full justify-center"
+    class="p-2 grid grid-rows-[1fr_auto] gap-2 w-full justify-center one"
     v-if="loaded"
   >
     <img
       :src="Song.pictureUrl(song.metadata.common.picture?.[0])"
       alt="cover"
-      class="aspect-square w-full"
+      class="aspect-square w-full one"
     />
-    <div class="grid grid-cols-[1fr_auto]">
+    <div class="grid grid-cols-[1fr_auto] three">
       <div class="grid">
         <h3>{{ song.metadata.common.title }}</h3>
         <p class="italic">{{ song.metadata.common.artist }}</p>
       </div>
-      <div class="flex items-center justify-end h-full gap-1">
+      <div class="flex items-center justify-end gap-1">
         <button
           class="cursor-pointer aspect-square grid place-content-center h-full"
           aria-label="Listen this song"
@@ -46,7 +48,7 @@ function play() {
           <Icon icon="pixel:playlist" />
         </button>
         <button
-          class="cursor-pointer aspect-square grid place-content-center h-full bg-secondary/20 rounded-full"
+          class="cursor-pointer aspect-square grid place-content-center h-full bg-secondary/20 rounded-full two"
           aria-label="Listen this song"
           title="play"
           type="button"
@@ -58,3 +60,23 @@ function play() {
     </div>
   </div>
 </template>
+
+<style scoped>
+.two {
+  width: 50px;
+  height: 50px;
+}
+
+.one {
+  background-color: var(--color-primary);
+  border-radius: 15px;
+}
+
+.three {
+  padding: 5px;
+}
+
+img {
+  border-radius: 15px;
+}
+</style>

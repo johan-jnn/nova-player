@@ -14,7 +14,16 @@ function filtered(query) {
   const found = [];
 
   for (const song of available) {
-    found.push(song);
+    if (!song.metadata) {
+      found.push(song);
+      continue;
+    }
+    //console.log(song.metadata.common.title);
+    //console.log(query);
+    song.metadata.common.title.includes(query);
+    const a = song.metadata.common.title.includes(query);
+
+    if (a === true) found.push(song);
   }
 
   return found;
@@ -32,12 +41,20 @@ function filtered(query) {
         placeholder="Rechercher"
       />
     </header>
-    <ul
-      class="grid grid-cols-4 gap-8 justify-between w-full overflow-y-scroll h-full"
-    >
+    <ul class="w-full overflow-y-scroll">
       <li v-for="song in filtered(query)" :key="song.url" class="h-fit">
         <Song :song />
       </li>
     </ul>
   </div>
 </template>
+
+<style scoped>
+ul {
+  gap: 30px 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  max-height: 75vh;
+  padding-right: 10px;
+}
+</style>

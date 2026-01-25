@@ -18,3 +18,9 @@ const NAV = {
     </nav>
   </aside>
 </template>
+
+<style scoped>
+aside{
+  padding-top: 50px;
+}
+</style>

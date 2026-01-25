@@ -1,12 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Science+Gothic:wght@100..900&display=swap");
 @import "tailwindcss";
 
-@theme {
+@theme inline {
   --font-corp: lexend, sans-serif;
   --font-heading: "Science Gothic", sans-serif;
 
-  --color-primary: rgb(255, 89, 9);
-  --color-secondary: rgb(149, 0, 255);
+  --color-primary: #591d1d;
+  --color-secondary: #ddc9ee;
+  --color-tercary: #8485d7;
   --color-black: rgb(26, 36, 33);
   --color-white: #ffffff;
 }

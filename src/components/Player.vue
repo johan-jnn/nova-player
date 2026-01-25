@@ -71,20 +71,27 @@ const timer = computed({
         />
       </div>
     </form>
-    <div class="flex items-end h-full justify-end pr-2">
-      <p v-if="player.next_song">
-        A suivre: {{ player.next_song.metadata.common.title }} par
-        {{ player.next_song.metadata.common.artist }}
-      </p>
-    </div>
   </div>
   <div v-else class="layer h-full grid place-content-center">
     <p>Nothing is currently playing. Select a song to begin</p>
   </div>
 </template>
 
-<style>
+<style scoped>
 .player {
-  /** Rendre le style du player un chouille plus joli */
+  display: grid;
+  grid-template-columns: 25% 1fr;
+}
+
+form {
+  flex-grow: 1;
+}
+
+img {
+  width: 70px;
+}
+
+button {
+  width: 70px;
 }
 </style>
